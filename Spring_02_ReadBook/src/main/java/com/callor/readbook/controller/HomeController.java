@@ -13,22 +13,22 @@ public class HomeController {
 
     Logger logger = LoggerFactory.getLogger(HomeController.class);
 
-    @Value("${mysql.username}")
-    private String userName;
-    @Value("${mysql.password}")
-    private String password;
-    @Value("${driverClassName}")
-    private String className;
-    @Value("${url}")
-    private String url;
+//    @Value("${db.username}")
+//    private String userName;
+//    @Value("${db.password}")
+//    private String password;
+//    @Value("${db.driverClassName}")
+//    private String className;
+//    @Value("${db.url}")
+//    private String url;
 
     @ResponseBody
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String home() {
         logger.debug("HOME이다!!!!");
-//        return "HOME";
-        return String.format("username : %s\n pw : %s\n" +
-                "url : %s\ndriver : %s", userName, password, className, url);
+        return "HOME";
+//        return String.format("username : %s\n pw : %s\n" +
+//                "url : %s\ndriver : %s", userName, password, className, url);
     }
 
     @RequestMapping(value = "/read", method = RequestMethod.GET)

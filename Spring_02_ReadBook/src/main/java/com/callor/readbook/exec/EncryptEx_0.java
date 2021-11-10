@@ -13,12 +13,21 @@ public class EncryptEx_0 {
 
         pbe.setAlgorithm(encPolicy);
         pbe.setPassword(salt);
+//
+//        String encText = pbe.encrypt(name);
+//        System.out.println(name);
+//        System.out.println(encText);
+//
+//        String planText = pbe.decrypt(encText);
+//        System.out.println(planText);
 
-        String encText = pbe.encrypt(name);
-        System.out.println(name);
-        System.out.println(encText);
+        String username = "root";
+        String password = "!Biz12341234";
+        // 암호화
+        String encUserName = pbe.encrypt(username);
+        String encPassword = pbe.encrypt(password);
 
-        String planText = pbe.decrypt(encText);
-        System.out.println(planText);
+        System.out.printf("user name: %s\n", encUserName);
+        System.out.printf("password: %s\n", encPassword);
     }
 }
