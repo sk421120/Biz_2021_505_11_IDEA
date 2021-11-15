@@ -1,10 +1,11 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="Spring_04_SecurityJPA:war exploded">
-    <output-path>$PROJECT_DIR$/out/artifacts/Spring_04_SecurityJPA_war_exploded</output-path>
+  <artifact type="exploded-war" name="sec:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/sec_war_exploded</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
-          <element id="module-output" name="Spring_04_SecurityJPA" />
+          <element id="module-output" name="sec" />
+          <element id="jpa-descriptors" facet="sec/jpa/JPA" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: org.springframework:spring-web:5.2.18.RELEASE" />
@@ -62,7 +63,7 @@
           <element id="library" level="project" name="Maven: org.webjars.npm:jquery:3.6.0" />
         </element>
       </element>
-      <element id="javaee-facet-resources" facet="Spring_04_SecurityJPA/web/Web" />
+      <element id="javaee-facet-resources" facet="sec/web/Web" />
     </root>
   </artifact>
 </component>

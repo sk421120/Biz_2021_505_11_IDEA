@@ -9,11 +9,11 @@
         <outputRelativeToContentRoot value="true" />
         <module name="Spring_03_Security" />
         <module name="sec" />
-        <module name="Spring_04_SecurityJPA" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="Spring_03_SimpleSecurity" target="15" />
+      <module name="Spring_04_SecurityJPA" target="15" />
     </bytecodeTargetLevel>
   </component>
 </project>

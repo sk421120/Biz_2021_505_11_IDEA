@@ -11,6 +11,7 @@ import java.util.List;
 public class MemberServiceImplV1 implements MemberService {
 
     private final MemberDao memDao;
+    
     public MemberServiceImplV1(MemberDao memDao) {
         this.memDao = memDao;
     }

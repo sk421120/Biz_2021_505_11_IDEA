@@ -50,15 +50,9 @@
 
     </security:http>
 
-    <bean id="loginService" class="com.callor.sec.service.auth.LoginService"/>
+<!--    <bean id="loginService" class="com.callor.sec.service.auth.LoginService"/>-->
 
     <security:authentication-manager>
-        <security:authentication-provider>
-            <security:user-service>
-                <security:user name="callor"
-                               authorities="ROLE_ADMIN"
-                               password="{noop}1234"/>
-            </security:user-service>
-        </security:authentication-provider>
+        <security:authentication-provider user-service-ref="loginService"/>
     </security:authentication-manager>
 </beans>

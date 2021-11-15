@@ -23,11 +23,11 @@ public class LoginService implements UserDetailsService {
 
     private final String encPassword = "$2a$04$Hdu3p5qGzssmGRpq.I9UrehUnkLBtWXOMBy/FOSZMgm5rNAqSSOHa";
 
-//    private final MemberDao memberDao;
+    private final MemberDao memberDao;
 
-//    public LoginService(MemberDao memberDao) {
-//        this.memberDao = memberDao;
-//    }
+    public LoginService(MemberDao memberDao) {
+        this.memberDao = memberDao;
+    }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
