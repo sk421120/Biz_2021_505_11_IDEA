@@ -3,7 +3,6 @@ package com.callor.js.config;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
-import org.jasypt.encryption.pbe.config.EnvironmentStringPBEConfig;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.mybatis.spring.annotation.MapperScan;
@@ -29,21 +28,10 @@ public class MyBatisConfig {
     @Value("${db.password}")
     private String password;
 
-    // 환경변수를 가져와서 config를 설정
-    private EnvironmentStringPBEConfig envConfig() {
-        EnvironmentStringPBEConfig config
-                = new EnvironmentStringPBEConfig();
-        config.setAlgorithm("PBEWithMD5AndDES");
-        // 환경변수 불러오기
-        config.setPasswordEnvName("callor.com");
-        return config;
-    }
-    //    encryptor를 사용해서 비밀번호를 복호화 시킬 설정
-    private StandardPBEStringEncryptor encryptor() {
-        StandardPBEStringEncryptor encryptor
-                = new StandardPBEStringEncryptor();
-        encryptor.setConfig(this.envConfig());
-        return encryptor;
+    private final StandardPBEStringEncryptor encryptor;
+
+    public MyBatisConfig(StandardPBEStringEncryptor encryptor) {
+        this.encryptor = encryptor;
     }
 
     //dataSource
@@ -53,8 +41,12 @@ public class MyBatisConfig {
         // 우리가 등록했던 url , username 등을 setter방식으로 저장함
         ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
         ds.setUrl("jdbc:mysql://localhost:3306/naraDB");
-        ds.setUsername("root");
-        ds.setPassword("!Biz12341234");
+
+        String planUsername = encryptor.decrypt(username);
+        ds.setUsername(planUsername);
+
+        String planPassword = encryptor.decrypt(password);
+        ds.setPassword(planPassword);
         return ds;
     }
 
